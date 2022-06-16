@@ -1,7 +1,7 @@
 import { sendData } from './network.js';
 import { Success } from './Success.js';
 import { Error } from './Error.js';
-import { validate, reset } from './validation.js';
+import { validate, reset, MAX_PRICE } from './validation.js';
 import { isImg } from './util.js';
 
 const adForm = document.querySelector('.ad-form');
@@ -36,8 +36,39 @@ btnReset.addEventListener('click', () => {
 });
 
 const inputPrice = adForm.querySelector('#price');
-document.querySelector('#type').addEventListener('change', (evt) => {
+const selectType = document.querySelector('#type');
+const slider = adForm.querySelector('.ad-form__slider');
+noUiSlider.create(slider, {
+  start: +inputPrice.value,
+  connect: 'lower',
+  step: 1,
+  range: {
+    // min: +selectType.value,    // BAD UX??
+    min: 0,
+    max: MAX_PRICE
+  },
+  format: {
+    to: (value) => parseInt(value, 10),
+    from: (value) => parseInt(value, 10)
+  }
+});
+
+slider.noUiSlider.on('update', () => {
+  inputPrice.value = slider.noUiSlider.get();
+});
+
+selectType.addEventListener('change', (evt) => {
   inputPrice.placeholder = evt.target.value;
+  // slider.noUiSlider.updateOptions({      // BAD UX??? If change price without user notify
+  //   range: {
+  //     min: +selectType.value,
+  //     max: MAX_PRICE
+  //   }
+  // });
+});
+
+inputPrice.addEventListener('change', (evt) => {
+  slider.noUiSlider.set(evt.target.value);
 });
 
 const timeGroup = document.querySelector('.ad-form__element--time');
@@ -70,4 +101,5 @@ function onImgInputChanged(evt) {
   const preview = map.get(evt.target);
   preview.src = URL.createObjectURL(evt.target.files[0]);
 }
+
 

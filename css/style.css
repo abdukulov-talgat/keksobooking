@@ -1058,6 +1058,10 @@ fieldset {
 
 /***** MY *****/
 
+.ad-form__element {
+  padding-bottom: 10px;
+}
+
 .ad-form__submit {
   transition: opacity 1s ease;
 }
@@ -1106,4 +1110,10 @@ fieldset {
   margin: auto;
   width: auto;
   height: auto;
+}
+
+/* Slider */
+.ad-form__slider {
+  margin-top: 15px;
+  /* margin-bottom: 20px; */
 }
