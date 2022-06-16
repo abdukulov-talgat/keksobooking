@@ -1,4 +1,6 @@
 import { setState, STATES } from './modules/page-state.js';
+import { initMap } from './modules/map.js';
 
 setState(STATES.disabled);
-setState(STATES.enabled);
+
+initMap(() => setState(STATES.enabled));
