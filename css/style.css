@@ -1053,3 +1053,17 @@ fieldset {
 .hidden {
   display: none;
 }
+
+
+
+/***** MY *****/
+
+.ad-form__submit {
+  transition: opacity 1s ease;
+}
+
+.ad-form__submit[disabled] {
+  opacity: 0.5;
+  position: relative;
+}
+
