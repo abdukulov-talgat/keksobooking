@@ -1067,3 +1067,22 @@ fieldset {
   position: relative;
 }
 
+/* Validation */
+.has-danger > input,
+.has-danger > select,
+.has-danger .ad-form__drop-zone,
+.has-danger .ad-form-header__drop-zone {
+  border-color: red;
+}
+
+.has-success > input,
+.has-success > select,
+.has-success .ad-form__drop-zone,
+.has-success .ad-form-header__drop-zone {
+  border-color: green;
+}
+
+.text-help {
+  padding: 5px 20px 0;
+  color: red;
+}
