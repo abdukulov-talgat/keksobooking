@@ -16,7 +16,7 @@ function enablePage() {
   adForm.querySelectorAll('fieldset').forEach((el) => { el.disabled = false; });
 
   mapFilters.classList.remove('map__filters--disabled');
-  Array.from(mapFilters.children).forEach((el) => {el.disabled = false;});
+  Array.from(mapFilters.children).forEach((el) => { el.disabled = false; });
 }
 
 function disablePage() {
@@ -24,7 +24,7 @@ function disablePage() {
   adForm.querySelectorAll('fieldset').forEach((el) => { el.disabled = true; });
 
   mapFilters.classList.add('map__filters--disabled');
-  Array.from(mapFilters.children).forEach((el) => {el.disabled = true;});
+  Array.from(mapFilters.children).forEach((el) => { el.disabled = true; });
 }
 
 
