@@ -1086,3 +1086,24 @@ fieldset {
   padding: 5px 20px 0;
   color: red;
 }
+
+/* Preview */
+.ad-form-header__preview {
+  width: 70px;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.ad-form__photo {
+  display: flex;
+}
+
+.ad-form-header__preview img,
+.ad-form__photo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin: auto;
+  width: auto;
+  height: auto;
+}

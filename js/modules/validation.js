@@ -1,3 +1,5 @@
+import {isImg} from './util.js';
+
 const LOCALE = 'ru';
 Pristine.setLocale(LOCALE);
 Pristine.addMessages(LOCALE, {
@@ -54,11 +56,7 @@ pristine.addValidator(
   getCapacityMsg,
 );
 
-const ACCEPT_TYPES = [
-  'jpg',
-  'jpeg',
-  'png',
-];
+
 adForm.querySelectorAll('input[type="file"]').forEach((it) => pristine.addValidator(
   it,
   validateFileType,
@@ -69,7 +67,7 @@ function validateFileType() {
   if (this.files.length === 0) {
     return true;
   }
-  return ACCEPT_TYPES.some((it) => this.files[0].name.endsWith(it));
+  return isImg(this.files[0]);
 }
 
 function getMinPriceMsg() {
@@ -88,4 +86,4 @@ function reset() {
   pristine.reset();
 }
 
-export { validate, reset };
+export { validate, reset};
