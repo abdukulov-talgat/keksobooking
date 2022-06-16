@@ -44,7 +44,7 @@ pristine.addValidator(
 );
 pristine.addValidator(
   inputPrice,
-  () => +inputPrice <= MAX_PRICE,
+  () => +inputPrice.value <= MAX_PRICE,
   `Максимальная Цена ${MAX_PRICE}`
 );
 
@@ -86,4 +86,4 @@ function reset() {
   pristine.reset();
 }
 
-export { validate, reset};
+export { validate, reset, MAX_PRICE};
