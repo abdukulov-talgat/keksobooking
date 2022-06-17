@@ -1053,3 +1053,67 @@ fieldset {
 .hidden {
   display: none;
 }
+
+
+
+/***** MY *****/
+
+.ad-form__element {
+  padding-bottom: 10px;
+}
+
+.ad-form__submit {
+  transition: opacity 1s ease;
+}
+
+.ad-form__submit[disabled] {
+  opacity: 0.5;
+  position: relative;
+}
+
+/* Validation */
+.has-danger > input,
+.has-danger > select,
+.has-danger .ad-form__drop-zone,
+.has-danger .ad-form-header__drop-zone {
+  border-color: red;
+}
+
+.has-success > input,
+.has-success > select,
+.has-success .ad-form__drop-zone,
+.has-success .ad-form-header__drop-zone {
+  border-color: green;
+}
+
+.text-help {
+  padding: 5px 20px 0;
+  color: red;
+}
+
+/* Preview */
+.ad-form-header__preview {
+  width: 70px;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.ad-form__photo {
+  display: flex;
+}
+
+.ad-form-header__preview img,
+.ad-form__photo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin: auto;
+  width: auto;
+  height: auto;
+}
+
+/* Slider */
+.ad-form__slider {
+  margin-top: 15px;
+  /* margin-bottom: 20px; */
+}
