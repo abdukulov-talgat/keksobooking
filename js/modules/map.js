@@ -107,4 +107,4 @@ function renderBaloon(item){
 }
 
 
-export { initMap, DEFAULT_POINT, reset, setSimilars, renderSimilars as drawSimilars };
+export { initMap, DEFAULT_POINT, reset, setSimilars, renderSimilars, similars };

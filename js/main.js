@@ -2,10 +2,10 @@ import { setState, STATES } from './modules/page-state.js';
 import { initMap, setSimilars } from './modules/map.js';
 import './modules/form.js';
 import { getData } from './modules/network.js';
+import './modules/filter.js';
 
 setState(STATES.disabled);
 initMap(() => {
-  console.log('map initialized');
   getData(
     (similars) => { //onSuccess
       setState(STATES.enabled);
