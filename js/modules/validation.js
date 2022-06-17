@@ -37,9 +37,17 @@ const pristine = new Pristine(adForm, {
 const inputPrice = document.querySelector('#price');
 const selectType = document.querySelector('#type');
 const MAX_PRICE = 100000;
+const HOUSE_TYPES = {
+  //[flat,house,bungalow,palace,hotel]
+  bungalow: 0,
+  flat: 1000,
+  hotel: 3000,
+  house: 5000,
+  palace: 10000,
+};
 pristine.addValidator(
   inputPrice,
-  () => +inputPrice.value >= +selectType.value,
+  () => +inputPrice.value >= +HOUSE_TYPES[selectType.value],
   getMinPriceMsg,
 );
 pristine.addValidator(
@@ -86,4 +94,4 @@ function reset() {
   pristine.reset();
 }
 
-export { validate, reset, MAX_PRICE};
+export { validate, reset, MAX_PRICE, HOUSE_TYPES};

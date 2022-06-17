@@ -18,16 +18,30 @@ function sendData(body, success, error) {
 
       if (success) {
         success();
-        console.log('Sending data... success');
       }
     })
     .catch((er) => {
       if (error) {
         error(er);
-        console.log(`Sending data... error: ${er}`);
+      }
+    });
+}
+
+function getData(success, error) {
+  fetch(`${ACTION_URL}/data`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then((json) => success(json))
+    .catch((er) => {
+      if (error) {
+        error(er);
       }
     });
 }
 
 
-export { sendData };
+export { sendData, getData };

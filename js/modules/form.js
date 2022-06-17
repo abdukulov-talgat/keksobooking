@@ -1,8 +1,9 @@
 import { sendData } from './network.js';
 import { Success } from './Success.js';
 import { Error } from './Error.js';
-import { validate, reset, MAX_PRICE } from './validation.js';
+import { validate, reset as resetValidation, MAX_PRICE, HOUSE_TYPES } from './validation.js';
 import { isImg } from './util.js';
+import {reset as resetMap} from './map.js';
 
 const adForm = document.querySelector('.ad-form');
 const btnSubmit = adForm.querySelector('.ad-form__submit');
@@ -31,7 +32,8 @@ adForm.addEventListener('submit', (evt) => {
   btnSubmit.disabled = true;
 });
 
-btnReset.addEventListener('click', () => {
+btnReset.addEventListener('click', (evt) => {
+  evt.preventDefault();
   resetAll();
 });
 
@@ -47,6 +49,7 @@ noUiSlider.create(slider, {
     min: 0,
     max: MAX_PRICE
   },
+  padding: [1000, 0],
   format: {
     to: (value) => parseInt(value, 10),
     from: (value) => parseInt(value, 10)
@@ -54,11 +57,11 @@ noUiSlider.create(slider, {
 });
 
 slider.noUiSlider.on('update', () => {
-  inputPrice.value = slider.noUiSlider.get();
+  inputPrice.value = +slider.noUiSlider.get();
 });
 
 selectType.addEventListener('change', (evt) => {
-  inputPrice.placeholder = evt.target.value;
+  inputPrice.placeholder = +HOUSE_TYPES[evt.target.value];
   // slider.noUiSlider.updateOptions({      // BAD UX??? If change price without user notify
   //   range: {
   //     min: +selectType.value,
@@ -87,10 +90,12 @@ map.forEach((value, key) => key.addEventListener('change', onImgInputChanged));
 
 function resetAll() {
   adForm.reset();
+  resetValidation();
+  resetMap();
   //filter reset          фильтрация (состояние фильтров и отфильтрованные метки) сбрасывается;
-  //map reset             метка адреса возвращается в исходное положение
+
   //ad-form address sync  значение поля адреса корректируется соответственно исходному положению метки;
-  reset();
+
 }
 
 function onImgInputChanged(evt) {
@@ -101,5 +106,3 @@ function onImgInputChanged(evt) {
   const preview = map.get(evt.target);
   preview.src = URL.createObjectURL(evt.target.files[0]);
 }
-
-
