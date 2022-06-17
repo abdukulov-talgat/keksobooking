@@ -20,6 +20,9 @@ filters.addEventListener('change', () => {
   onFiltersChangedThrottled();
 });
 
+filters.addEventListener('reset', () => {
+  onFiltersChangedThrottled();
+});
 
 function onFiltersChanged() {
   let items = similars.slice();

@@ -49,7 +49,6 @@ noUiSlider.create(slider, {
     min: 0,
     max: MAX_PRICE
   },
-  padding: [1000, 0],
   format: {
     to: (value) => parseInt(value, 10),
     from: (value) => parseInt(value, 10)
@@ -90,12 +89,11 @@ map.forEach((value, key) => key.addEventListener('change', onImgInputChanged));
 
 function resetAll() {
   adForm.reset();
+  inputPrice.value = 0;
+  slider.noUiSlider.set(0);
   resetValidation();
   resetMap();
-  //filter reset          фильтрация (состояние фильтров и отфильтрованные метки) сбрасывается;
-
-  //ad-form address sync  значение поля адреса корректируется соответственно исходному положению метки;
-
+  document.querySelector('.map__filters').reset();
 }
 
 function onImgInputChanged(evt) {

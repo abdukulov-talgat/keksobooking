@@ -46,7 +46,8 @@ function initMap(cb) {
 }
 
 function reset() {
-  // map.setView(DEFAULT_POINT, 13);
+  map.setView(DEFAULT_POINT, 13);
+  DEFAULT_MARKER.setLatLng(DEFAULT_POINT);
   DEFAULT_MARKER.setLatLng(DEFAULT_POINT);
 }
 
